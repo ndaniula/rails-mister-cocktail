@@ -31,6 +31,7 @@ before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @cocktail.destroy
+    redirect_to cocktails_path
   end
 
 
@@ -41,7 +42,7 @@ before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
   end
 
   def cocktail_params
-  params.require(:cocktail).permit(:name)
+  params.require(:cocktail).permit(:name, :image_url)
   end
 
 end

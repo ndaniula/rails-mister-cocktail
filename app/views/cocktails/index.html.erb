@@ -1,10 +1,33 @@
-<h1> All Cocktails List</h1>
-
-<% @cocktails.each do |cocktail| %>
-<ul>
-<li><%=  link_to cocktail.name, cocktail_path(cocktail) %></li>
-</ul>
-<% end %>
 
 
-<%= link_to '+Add new cocktail', new_cocktail_path %>
+
+<div class="banner" style="background-image: url(<%= image_path "banner_image.jpg"%>)">
+
+
+ <h1> Cocktails bible </h1>
+ <p> Discover your new favourite! </p>
+</div>
+
+</div>
+
+<div class="container">
+  <h3> Cocktails List</h3>
+  <div class="row">
+    <ul>
+      <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-4">
+       <div class="card" class="cocktail" style="background-image: url(<%= image_path cocktail.image_url %>);">
+        <p><%=  link_to cocktail.name, cocktail_path(cocktail) %></p>
+      </div>
+      <div class="text-action" >
+        <%=  link_to 'Delete', cocktail, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%=  link_to 'Edit', edit_cocktail_path(cocktail) %>
+      </div>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <p><%= link_to '+Add new cocktail', new_cocktail_path %></p>
+

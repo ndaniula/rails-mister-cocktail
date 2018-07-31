@@ -1,16 +1,26 @@
-<h2><%= @cocktail.name %></h2>
+<div class="container">
+  <div class="row">
+    <div class="left col-xs-12 col-sm-8">
+      <h2><%= @cocktail.name %></h2>
 
-<% if @cocktail.doses.empty? %>
-<p> This cocktail has no ingredients addded yet!</p>
-<% else %>
-<% @cocktail.doses.each do |dose| %>
-<ul>
-<li><%= dose.ingredient[:name] %> <%= dose.description%></li>
-<%end%>
-</ul>
-<%end%>
+      <%= image_tag @cocktail.image_url, width: 400 %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+     <h3> Ingredients list: </h3>
+     <% if @cocktail.doses.empty? %>
+     <p> This cocktail has no ingredients addded yet!</p>
+     <% else %>
+     <% @cocktail.doses.each do |dose| %>
+     <ul>
+      <li><%= dose.description%> <%= dose.ingredient[:name] %></li>
+      <%end%>
+    </ul>
+    <%end%>
+  </div>
 
 
-
+</div>
 <%= link_to 'Add ingredient', new_cocktail_dose_path(@cocktail) %>
 <%= link_to 'Back to the list', cocktails_path %>
+</div>
+
